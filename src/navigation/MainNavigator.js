@@ -6,25 +6,62 @@ import Cabecera from '../components/Cabecera'
 import Home from '../Screens/Home'
 import ColeccionScreen from '../Screens/ColeccionScreen'
 import ItemScreen from '../Screens/ItemScreen'
+import PlantasDict from '../Screens/PlantasDict'
+import DetalleScreen from '../Screens/DetalleScreen'
+import { fontsColection } from '../utils/fonts'
+import { useFonts } from 'expo-font'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import HomeNavigator from './HomeNavigator'
+import PlantasNavigator from './PlantasNavigator'
+import { colors } from '../utils/colors'
+import TabBarIcon from '../components/TabBarIcon.js'
+
 const MainNavigator = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agregarTarea, screenWidth,
-  arrTarea,/* onHandlerModal, */ completeTask, screenHeigth, tareaSelect,borrarTarea,/* modalVisible, */ onHandlerDetalle}) => {
+  arrTarea,/* onHandlerModal, */ /* completeTask, */ screenHeigth, tareaSelect,/* borrarTarea, *//* modalVisible, */ /* onHandlerDetalle */}) => {
+    const [fontsLoaded] = useFonts(fontsColection)
     const Stack = createNativeStackNavigator()
     const {height, width, scale, fontScale} = useWindowDimensions()
+    const Tab = createBottomTabNavigator()
   return (
-    <NavigationContainer styles = {styles.container}>
-        <Stack.Navigator initialRouteName="Home" 
-        screenOptions={({route, navigation}) => {
-          return{
-            header: () => {
-              return <Cabecera titulo={route.name} navigation={navigation} route = {route}/>
-            }
-          }
-        }}>
-          <Stack.Screen name='Inicio' component={Home}/>
-          <Stack.Screen name='Mis plantas' component={ColeccionScreen} initialParams={{tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agregarTarea, screenWidth,
-    arrTarea,/* onHandlerModal, */ completeTask, screenHeigth, tareaSelect,borrarTarea,/* modalVisible, */ onHandlerDetalle}}/>
-          <Stack.Screen name='Detalle' component={ItemScreen} initialParams={{/* modalVisible, tareaSelect, */ borrarTarea/* , itemDetalle *//* ,onHandlerModal */}}/> 
-      </Stack.Navigator>
+    // <NavigationContainer styles = {styles.container}>
+    //     <Stack.Navigator initialRouteName="Home" 
+    //     screenOptions={({route, navigation}) => {
+    //       return{
+    //         header: () => {
+    //           return <Cabecera titulo={route.name} navigation={navigation} route = {route}/>
+    //         }
+    //       }
+    //     }}>
+    //       <Stack.Screen name='Inicio' component={Home}/>
+    //       <Stack.Screen name='Mis plantas' component={ColeccionScreen} initialParams={{/* tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agregarTarea, */ screenWidth,
+    // /* arrTarea, *//* onHandlerModal, */ /* completeTask, */ screenHeigth, /* tareaSelect, *//* borrarTarea, *//* modalVisible, */ /* onHandlerDetalle */}}/>
+    //       <Stack.Screen name='Detalle' component={ItemScreen} initialParams={{/* modalVisible, tareaSelect, */ /* borrarTarea *//* , itemDetalle *//* ,onHandlerModal */}}/>
+    //       <Stack.Screen name="Plantas" component={PlantasDict} initialParams={{screenHeigth, screenWidth}}/> 
+    //       <Stack.Screen name="Detalle planta" component={DetalleScreen} initialParams={{screenHeigth, screenWidth}}/> 
+    //   </Stack.Navigator>
+    // </NavigationContainer>
+
+    <NavigationContainer>
+      <Tab.Navigator
+      initialRouteName='HomeNavigator'
+      screenOptions={{
+        headerShown:false,
+        tabBarShowLabel:false,
+        tabBarStyle:styles.tabBar,
+
+      }}
+      >
+        <Tab.Screen name="Home" component={HomeNavigator}  
+        options={{
+          tabBarIcon:()=><TabBarIcon title = "Inicio" icon="home"/>
+        }}/>
+        <Tab.Screen name="Plantas tab" component={PlantasNavigator} initialParams={{screenHeigth, screenWidth}}
+        options={{
+          tabBarIcon:()=><TabBarIcon title = "Plantas" icon="list"/>
+          
+      }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
@@ -40,4 +77,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     gap:10,
   },
+  tabBar:{
+    backgroundColor:colors.VerdeClaro,
+    position:"absolute"
+  }
 })

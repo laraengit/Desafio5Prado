@@ -3,20 +3,24 @@ import React from 'react'
 import Cabecera from '../components/Cabecera'
 import BotonPropio from '../components/BotonPropio'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { colors } from '../utils/colors'
+import { fontsColection } from '../utils/fonts'
+import { useFonts } from 'expo-font'
 
 const Home = ({navigation}) => {
+  const [fontsLoaded] = useFonts(fontsColection)
   return (
     <View style = {styles.container}>
       
       
         <BotonPropio
               nombre={"Mis plantas"}
-              colorFondo={"#5DC966"}
-              onPress={() => {navigation.navigate("Mis plantas",{})}}
+              colorFondo={colors.verdeOscuro}
+              onPress={() => {navigation.navigate("Plantas",{})}}
               />
         <BotonPropio
               nombre={"+ Info"}
-              colorFondo={"#5DC966"}
+              colorFondo={colors.verdeChillon}
               onPress={() => {console.log("+ info")}}
               />
 

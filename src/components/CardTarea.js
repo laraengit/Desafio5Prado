@@ -2,14 +2,16 @@ import { StyleSheet, Text, View, Button, Switch } from 'react-native'
 import React from 'react'
 import BotonPropio from './BotonPropio'
 
-const CardTarea = ({navigation,item, onHandlerModal, completeTask, screenWidth, screenHeigth, onHandlerDetalle}) => {
+const CardTarea = ({navigation,item, onHandlerModal, completeTask, screenWidth, screenHeigth, onHandlerDetalle, itemDetalle
+}) => {
+  const itemCopy = Object.assign({},itemCopy)
   return (
-    <View style = {[styles.card,{width:screenWidth -70,height:screenHeigth -550}]}>
+    <View style = {[styles.card,{width:screenWidth -70,height:screenHeigth -450}]}>
         <View style = {styles.cabeceraCard}>
             <Text style = {styles.textTitle}>{item.titulo} </Text>
             <View style = {styles.riego}>
-                <Text style={{color:"white"}}>{item.completed ? "Riego realizado" : "Falta Riego"}</Text>
-                <Switch value = {item.completed} onValueChange={() => completeTask(item.id)}/>
+                <Text style={{color:"white", fontFamily:'Montserrat'}}>{item.completed ? "Riego realizado" : "Falta Riego"}</Text>
+                <Switch value = {item.completed} onValueChange={() => {completeTask(item.id)}}/>
             </View>
             
         </View>
@@ -23,7 +25,7 @@ const CardTarea = ({navigation,item, onHandlerModal, completeTask, screenWidth, 
             <BotonPropio
                 nombre={"Ver detalle"}
                 colorFondo={"#F5A69E"}
-                onPress={() => {navigation.navigate("Detalle")}}
+                onPress={() => {onHandlerDetalle(item),navigation.navigate("Detalle",{itemCopy}) }}
             />
         </View>
         
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#39997E",
         gap:30,
         margin:40,
+       
         
       },
       cabeceraCard:{
@@ -58,7 +61,8 @@ const styles = StyleSheet.create({
       riego:{
         color:"white",
         flexDirection:"row",
-        alignItems:"center"
+        alignItems:"center",
+        fontFamily:"Montserrat",
 
 
       },
@@ -73,7 +77,8 @@ const styles = StyleSheet.create({
         fontSize:18,
         margin: 10,
         padding:10,
-        
+        fontSize:20 ,       
+        fontFamily:"Montserrat",
 
       },
       textDescripcion:{
@@ -82,5 +87,6 @@ const styles = StyleSheet.create({
         height:50,
         padding:10,
         backgroundColor:"white",
+        fontFamily:"Montserrat",
       }
 })

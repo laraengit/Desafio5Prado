@@ -2,18 +2,21 @@ import { StyleSheet, TextInput, View, Button, Text } from 'react-native'
 import uuid from 'react-native-uuid'
 import { useState } from 'react';
 import BotonPropio from './BotonPropio'
-const AgregarTarea = ({/* tareaTitle, onHandlerTitle, *//* tareaDesc, onHandlerDesc, *//* agregarTarea, */ screenWidth, setArrTarea, arrTarea }) => {
-  const [tareaTitle,setTitle] = useState("")
+import { useFonts } from 'expo-font';
+import { fontsColection } from '../utils/fonts';
+const AgregarTarea = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agregarTarea, screenWidth, setArrTarea, arrTarea }) => {
+  const [fontsLoaded] = useFonts(fontsColection)
+  /* const [tareaTitle,setTitle] = useState("")
   const [tareaDesc,setDesc] = useState("")
   
   const onHandlerTitle = (t) =>{
     setTitle(t)
 
-  }
-  const onHandlerDesc = (d) =>{
+  } */
+  /* const onHandlerDesc = (d) =>{
     setDesc(d)
-  }
-  const agregarTarea = () =>{
+  } */
+  /* const agregarTarea = () =>{
     const nuevaTarea = {
       id : uuid.v4(),
       titulo : tareaTitle,
@@ -26,11 +29,11 @@ const AgregarTarea = ({/* tareaTitle, onHandlerTitle, *//* tareaDesc, onHandlerD
     setTitle("")
     setDesc("")
     console.log(arrTarea)
-  }
+  } */
   
   return (
     <View style={[styles.inputContainer,{width:screenWidth-70}]}>
-        <Text>Agregar planta</Text>
+        <Text style={styles.tituloInput}>Agregar planta</Text>
         <TextInput value={tareaTitle} placeholder='Nombre' style={styles.input} onChangeText={onHandlerTitle}/>
         <TextInput value={tareaDesc} placeholder='Cuidados' style={styles.input} onChangeText={onHandlerDesc}/>
         <BotonPropio
@@ -53,6 +56,13 @@ const styles = StyleSheet.create({
         borderRadius:5,
         padding:10,
         gap:20,
+        marginTop:40,
+        
+        
+      },
+      tituloInput:{
+        fontFamily:"Montserrat",
+        fontSize:17
       },
       input:{
         width:250,
@@ -62,5 +72,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius:5,
         color:"black",
+        fontFamily:"Lato",
       },
 })
