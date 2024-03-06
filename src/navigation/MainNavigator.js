@@ -53,11 +53,11 @@ const MainNavigator = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agre
       >
         <Tab.Screen name="Home" component={HomeNavigator}  
         options={{
-          tabBarIcon:()=><TabBarIcon title = "Inicio" icon="home"/>
+          tabBarIcon:({focused})=><TabBarIcon title = "Inicio" icon="home" focused = {focused}/>
         }}/>
         <Tab.Screen name="Plantas tab" component={PlantasNavigator} initialParams={{screenHeigth, screenWidth}}
         options={{
-          tabBarIcon:()=><TabBarIcon title = "Plantas" icon="list"/>
+          tabBarIcon:({focused})=><TabBarIcon title = "Plantas" icon="list" focused = {focused}/>
           
       }}
         />

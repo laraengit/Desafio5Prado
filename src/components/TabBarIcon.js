@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
-const TabBarIcon = ({title,icon}) => {
+import { colors } from '../utils/colors'
+const TabBarIcon = ({title,icon, focused}) => {
+  const colorFocus = focused ? "white": colors.verdeOscuro
   return (
     <View style={styles.container}>
-      <Feather name = {icon} size={20} color="white"/>
-      <Text style={styles.tabBarText}>{title}</Text>
+      <Feather name = {icon} size={20} color={colorFocus}/>
+      <Text style={[styles.tabBarText, {color: colorFocus}]}>{title}</Text>
     </View>
   )
 }
@@ -18,6 +20,6 @@ const styles = StyleSheet.create({
 
     },
     tabBarText:{
-      color:'white'
+      
     }
-  })
+})
