@@ -15,9 +15,16 @@ import MainNavigator from './src/navigation/MainNavigator';
 import { fontsColection } from './src/utils/fonts';
 import { useFonts } from 'expo-font';
 import { colors } from './src/utils/colors';
+import { store } from './src/Store/index';
+import { Provider } from 'react-redux';
+import { AppRegistry } from 'react-native';
+
+
+
 // import {useFonts} from "expo-font"
 // import { fontCollection } from './src/utils/globals/fonts'
 const  App = () => {
+ 
   const [fontsLoaded] = useFonts(fontsColection)
   // const [fontsLoaded] = useFonts(fontCollection)
   // const Stack = createNativeStackNavigator()
@@ -82,26 +89,28 @@ const  App = () => {
 
   return (
     <>
-    
       <StatusBar/>
+        <Provider store = {store}>
+          <MainNavigator
+            /* tareaTitle={tareaTitle} */
+            /* onHandlerTitle = {onHandlerTitle} */
+            /* tareaDesc = {tareaDesc} */
+            /* onHandlerDesc= {onHandlerDesc} */
+            /* agregarTarea ={agregarTarea} */
+            screenWidth = {screenWidth}
+            /* arrTarea = {arrTarea} */
+            /* onHandlerModal = {onHandlerModal} */
+          /*  completeTask = {completeTask} */ 
+            screenHeigth = {screenHeigth}
+            /* tareaSelect = {tareaSelect} */
+            /* borrarTarea = {borrarTarea} */
+            /* modalVisible = {modalVisible} */
+            /* onHandlerDetalle = {onHandlerDetalle} */
+          />
+
+        </Provider>
     
-      <MainNavigator
-        /* tareaTitle={tareaTitle} */
-        /* onHandlerTitle = {onHandlerTitle} */
-        /* tareaDesc = {tareaDesc} */
-        /* onHandlerDesc= {onHandlerDesc} */
-        /* agregarTarea ={agregarTarea} */
-        screenWidth = {screenWidth}
-        /* arrTarea = {arrTarea} */
-        /* onHandlerModal = {onHandlerModal} */
-       /*  completeTask = {completeTask} */ 
-        screenHeigth = {screenHeigth}
-        /* tareaSelect = {tareaSelect} */
-        /* borrarTarea = {borrarTarea} */
-        /* modalVisible = {modalVisible} */
-        /* onHandlerDetalle = {onHandlerDetalle} */
       
-      />
 
       
     
@@ -111,7 +120,7 @@ const  App = () => {
   )
 }
 export default App
-
+AppRegistry.registerComponent('my-list', () => App);
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -15,6 +15,7 @@ import HomeNavigator from './HomeNavigator'
 import PlantasNavigator from './PlantasNavigator'
 import { colors } from '../utils/colors'
 import TabBarIcon from '../components/TabBarIcon.js'
+import MisPlantasNavigator from './MisPlantasNavigator.js'
 
 const MainNavigator = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agregarTarea, screenWidth,
   arrTarea,/* onHandlerModal, */ /* completeTask, */ screenHeigth, tareaSelect,/* borrarTarea, *//* modalVisible, */ /* onHandlerDetalle */}) => {
@@ -55,6 +56,12 @@ const MainNavigator = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agre
         options={{
           tabBarIcon:({focused})=><TabBarIcon title = "Inicio" icon="home" focused = {focused}/>
         }}/>
+        <Tab.Screen name="Mis Plantas tab" component={MisPlantasNavigator} initialParams={{screenHeigth, screenWidth}}
+        options={{
+          tabBarIcon:({focused})=><TabBarIcon title = "Mi jardín" icon="star" focused = {focused}/>
+          
+      }}
+        />
         <Tab.Screen name="Plantas tab" component={PlantasNavigator} initialParams={{screenHeigth, screenWidth}}
         options={{
           tabBarIcon:({focused})=><TabBarIcon title = "Plantas" icon="list" focused = {focused}/>

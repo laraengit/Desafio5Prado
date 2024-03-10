@@ -1,11 +1,17 @@
 import { StyleSheet, TextInput, View, Button, Text } from 'react-native'
 import uuid from 'react-native-uuid'
-import { useState } from 'react';
+import { useSate } from 'react';
 import BotonPropio from './BotonPropio'
 import { useFonts } from 'expo-font';
 import { fontsColection } from '../utils/fonts';
-const AgregarTarea = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agregarTarea, screenWidth, setArrTarea, arrTarea }) => {
+import { agregarPlanta } from '../features/misplantasSlice';
+import { UseDispatch, useDispatch, useSelector } from 'react-redux';
+import { setPlanta } from '../features/nuevaPlantaSlice';
+const AgregarTarea = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,/* agregarTarea, */ screenWidth }) => {
   const [fontsLoaded] = useFonts(fontsColection)
+  const dispatch = useDispatch()
+  const nuevaplanta = useSelector((state)=>state.nuevaplanta.value)
+  const [plantaDef, setPlantaDef] = useState({})
   /* const [tareaTitle,setTitle] = useState("")
   const [tareaDesc,setDesc] = useState("")
   
@@ -34,12 +40,14 @@ const AgregarTarea = ({tareaTitle, onHandlerTitle,tareaDesc, onHandlerDesc,agreg
   return (
     <View style={[styles.inputContainer,{width:screenWidth-70}]}>
         <Text style={styles.tituloInput}>Agregar planta</Text>
-        <TextInput value={tareaTitle} placeholder='Nombre' style={styles.input} onChangeText={onHandlerTitle}/>
-        <TextInput value={tareaDesc} placeholder='Cuidados' style={styles.input} onChangeText={onHandlerDesc}/>
+        <TextInput value={tareaTitle} placeholder='Nombre' style={styles.input} onChangeText={()=>setPlantaDef({...plantaDef,nombre:tareaTitle})}/>
+        <TextInput value={especie} placeholder='Especie' style={styles.input} onChangeText={()=>setPlantaDef({...plantaDef,especie:especie})}/>
+        <TextInput value={riego} placeholder='Riego' style={styles.input} onChangeText={()=>setPlantaDef({...plantaDef,riego:riego})}/>
+        <TextInput value={tareaDesc} placeholder='Cuidados' style={styles.input} onChangeText={()=>setPlantaDef({...plantaDef,cuidados:tareaDesc})}/>
         <BotonPropio
             nombre={"Agregar"}
             colorFondo={"#5DC966"}
-            onPress={agregarTarea}
+            onPress={() => {dispatch(setPlanta(plantaDef));dispatch(agregarTarea(nuevaplanta))}}
             />
         {/* <Button title='+' onPress={agregarTarea}/> */}
       </View>
