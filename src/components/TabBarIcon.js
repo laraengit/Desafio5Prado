@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { colors } from '../utils/colors'
+import fonts from '../utils/fonts'
 const TabBarIcon = ({title,icon, focused}) => {
   const colorFocus = focused ? "white": colors.verdeOscuro
   return (
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
 
     },
     tabBarText:{
+      fontFamily:fonts.Lato
       
     }
 })

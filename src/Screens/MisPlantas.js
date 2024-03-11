@@ -10,17 +10,22 @@ import { useState } from 'react';
 import uuid from 'react-native-uuid'
 import { useSelector } from 'react-redux'
 
-const MisPlantas = () => {
-    const misPlantas = useSelector((state)=>state.misPlantas)
+const MisPlantas = ({navigation, route}) => {
+  const {screenHeigth,screenWidth} = route.params
+  const misPlantas = useSelector((state)=>state.misPlantas)
   return (
     <View style = {styles.container}>
       <AgregarTarea
-        tareaTitle= {tareaTitle} 
-        onHandlerTitle= {onHandlerTitle}
-        tareaDesc= {tareaDesc} 
-        onHandlerDesc= {onHandlerDesc}
-        agregarTarea= {agregarTarea}
         screenWidth={screenWidth}
+      />
+      <ListaTareas
+        navigation={navigation}
+        /* onHandlerModal = {onHandlerModal} */
+        /* completeTask={completeTask} */
+        screenWidth={screenWidth}
+        screenHeigth = {screenHeigth}
+        /* onHandlerDetalle = {onHandlerDetalle} */
+        /* itemDetalle = {itemDetalle} */
       />
     </View>
   )

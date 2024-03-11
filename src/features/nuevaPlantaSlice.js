@@ -2,19 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import uuid from 'react-native-uuid'
 const initialState = {
     nombre:"",
-    especie:"",
+    /* especie:"",
     riego:"",
-    cuidados:""
+    cuidados:"" */
 
 }
 
-export const nuevaplantaSlice = createSlice({
+export const nuevaPlantaSlice = createSlice({
     name: "nuevaplanta",
     initialState: initialState,
     reducers:{
         setPlanta:(state,actions)=>state=actions.payload,
     }
 })
-export const  {setPlanta} = misplantasSlice.actions
+export const  {setPlanta} = nuevaPlantaSlice.actions
 
-export default nuevaplantaSlice.reducer
+export default nuevaPlantaSlice.reducer

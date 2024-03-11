@@ -1,27 +1,26 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React from 'react'
 import CardTarea from './CardTarea'
+import { useSelector } from 'react-redux'
+import CardMisPlantas from './CardMisPlantas'
 
-const ListaTareas = ({navigation,arrTarea,onHandlerModal, completeTask, screenWidth, screenHeigth, onHandlerDetalle, itemDetalle}) => {
+const ListaTareas = ({navigation,screenWidth, screenHeigth}) => {
   console.log('Lista Plantas')
   console.log('Listado que llegó')
-  console.log(arrTarea)
+  const misplantas = useSelector((state)=>state.misplantas)
+  console.log(misplantas)
   return (
     <View style = {[styles.cardContainer,{height:screenHeigth -350}]}>
         <FlatList
           pagingEnabled = {true}
-          data={arrTarea}
+          data={misplantas.items}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <CardTarea
+            <CardMisPlantas
+            navigation = {navigation}
               item = {item}
-              navigation={navigation}
-              onHandlerModal = {onHandlerModal}
-              completeTask ={completeTask}
               screenWidth = {screenWidth}
               screenHeigth = {screenHeigth}
-              onHandlerDetalle = {onHandlerDetalle}
-              itemDetalle = {itemDetalle}
             />
           )}
         />

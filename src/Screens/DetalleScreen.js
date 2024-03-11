@@ -3,10 +3,13 @@ import React from 'react'
 import plantasData from '../utils/data/plantasData.json'
 import { useState, useEffect } from 'react'
 import { colors } from '../utils/colors'
+import fonts, { fontsColection } from '../utils/fonts'
+import { useFonts } from 'expo-font'
 
 const DetalleScreen = ({route}) => {
     const {idPlanta} = route.params
     const [planta,setPlanta] = useState({})
+    const [fontsLoaded] = useFonts(fontsColection)
 
   useEffect(()=>{
     const plantaElegida = plantasData.find(planta => planta.id === idPlanta)
@@ -60,7 +63,7 @@ const styles = StyleSheet.create({
     },
     label:{
         textAlign:"left",
-        fontFamily:'Montserrat',
+        fontFamily:fonts.Montserrat,
         width:280,
         borderRadius:8,
         backgroundColor:colors.VerdeClaro,

@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Cabecera from '../components/Cabecera'
 import PlantasDict from '../Screens/PlantasDict'
 import DetalleScreen from '../Screens/DetalleScreen'
+import MisPlantas from '../Screens/MisPlantas'
+import DetalleMiPlanta from '../Screens/DetalleMiPlanta'
 
 const MisPlantasNavigator = ({route}) => {
     const Stack = createNativeStackNavigator()
@@ -18,8 +20,8 @@ const MisPlantasNavigator = ({route}) => {
             }
           }
         }}>
-          <Stack.Screen name="Plantas" component={PlantasDict} initialParams={{screenHeigth, screenWidth}}/> 
-          <Stack.Screen name="Detalle planta" component={DetalleScreen} initialParams={{screenHeigth, screenWidth}}/> 
+          <Stack.Screen name="Mis Plantas" component={MisPlantas} initialParams={{screenHeigth,screenWidth}}/> 
+          <Stack.Screen name="Mi planta" component={DetalleMiPlanta} initialParams={{screenHeigth, screenWidth}}/> 
       </Stack.Navigator>
   )
 }

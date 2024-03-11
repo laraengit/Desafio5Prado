@@ -15,7 +15,7 @@ import MainNavigator from './src/navigation/MainNavigator';
 import { fontsColection } from './src/utils/fonts';
 import { useFonts } from 'expo-font';
 import { colors } from './src/utils/colors';
-import { store } from './src/Store/index';
+import { store } from './src/app/store';
 import { Provider } from 'react-redux';
 import { AppRegistry } from 'react-native';
 
@@ -88,9 +88,10 @@ const  App = () => {
   // if(!fontsLoaded) return null
 
   return (
-    <>
-      <StatusBar/>
+  
+      
         <Provider store = {store}>
+          <StatusBar/>
           <MainNavigator
             /* tareaTitle={tareaTitle} */
             /* onHandlerTitle = {onHandlerTitle} */
@@ -114,7 +115,7 @@ const  App = () => {
 
       
     
-    </>
+  
     
     
   )

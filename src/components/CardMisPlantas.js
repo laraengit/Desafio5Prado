@@ -1,26 +1,26 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import BotonPropio from './BotonPropio'
-import { fontsColection } from '../utils/fonts'
-import { useFonts } from 'expo-font'
 import { colors } from '../utils/colors'
-import fonts from '../utils/fonts'
-const CardPlanta = ({navigation,item, screenHeigth, screenWidth}) => {
-    const [fontsLoaded] = useFonts(fontsColection)
-    return (
+import BotonPropio from './BotonPropio'
+import { useFonts } from 'expo-font'
+import fonts, { fontsColection } from '../utils/fonts'
+const CardMisPlantas = ({navigation,item, screenHeigth, screenWidth}) => {
+  const [fontsLoaded] = useFonts(fontsColection)
+  return (
     <View style = {[styles.card,{width:screenWidth -70,height:screenHeigth -750}]}>
         
       <Text style = {styles.textTitle} >{item.nombre}</Text>
       <BotonPropio
                 nombre={"Ver detalle"}
                 colorFondo={colors.rosa}
-                onPress={() => {navigation.navigate("Detalle planta",{idPlanta:item.id}) }}
+                onPress={() => {navigation.navigate("Mi planta",{idPlanta:item.id});console.log(item.id) }}
             />
     </View>
   )
 }
 
-export default CardPlanta
+export default CardMisPlantas
+
 const styles = StyleSheet.create({
     card:{
         flexDirection:"row",

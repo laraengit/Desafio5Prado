@@ -10,7 +10,7 @@ export const misplantasSlice = createSlice({
     initialState: initialStateplantas,
     reducers:{
         agregarPlanta:(state,actions)=>{
-            state.items = [...state.items, {...actions.payload}]
+            state.items = [...state.items, {...actions.payload, id: uuid.v4()}]
         }
     }
 })
