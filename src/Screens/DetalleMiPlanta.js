@@ -8,15 +8,16 @@ import { colors } from '../utils/colors'
 
 const DetalleMiPlanta = ({route}) => {
     console.log("Detalle mi planta")
+    const {idMiPlanta} = route.params
+    console.log(idMiPlanta)
     const [fontsLoaded] = useFonts(fontsColection)
     const misplantas = useSelector((state)=>state.misplantas)
     console.log(misplantas)
-    const {idMiPlanta} = route.params
     const [miplanta,setMiPlanta] = useState({})
     useEffect(()=>{
         const data = misplantas.items
         console.log(data)
-        const miplantaElegida = data.some(planta => {String(planta.id) == String(idMiPlanta); console.log(planta.id)})
+        const miplantaElegida = data.find((planta) => planta.id === idMiPlanta)
         console.log(miplantaElegida)
         setMiPlanta(miplantaElegida)
         console.log(miplantaElegida)

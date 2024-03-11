@@ -7,13 +7,13 @@ import fonts, { fontsColection } from '../utils/fonts'
 const CardMisPlantas = ({navigation,item, screenHeigth, screenWidth}) => {
   const [fontsLoaded] = useFonts(fontsColection)
   return (
-    <View style = {[styles.card,{width:screenWidth -70,height:screenHeigth -750}]}>
+    <View style = {[styles.card,{width:screenWidth -70,height:screenHeigth -800}]}>
         
       <Text style = {styles.textTitle} >{item.nombre}</Text>
       <BotonPropio
                 nombre={"Ver detalle"}
                 colorFondo={colors.rosa}
-                onPress={() => {navigation.navigate("Mi planta",{idPlanta:item.id});console.log(item.id) }}
+                onPress={() => {navigation.navigate("Mi planta",{idMiPlanta:item.id});console.log(item.id) }}
             />
     </View>
   )

@@ -12,8 +12,8 @@ const DetalleScreen = ({route}) => {
     const [fontsLoaded] = useFonts(fontsColection)
 
   useEffect(()=>{
-    const plantaElegida = plantasData.find(planta => planta.id === idPlanta)
-    
+    const plantaElegida = plantasData.find((planta) => planta.id === idPlanta)
+    console.log(plantaElegida)
     setPlanta(plantaElegida)
   },[idPlanta])
   return (

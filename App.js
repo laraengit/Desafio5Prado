@@ -18,7 +18,7 @@ import { colors } from './src/utils/colors';
 import { store } from './src/app/store';
 import { Provider } from 'react-redux';
 import { AppRegistry } from 'react-native';
-
+import fonts from './src/utils/fonts';
 
 
 // import {useFonts} from "expo-font"
@@ -40,6 +40,7 @@ const  App = () => {
   const [tareaTitle,setTitle] = useState("")
   const [tareaDesc,setDesc] = useState("")
   const [arrTarea,setArrTarea] = useState([])
+  
   const agregarTarea = () =>{
     const nuevaTarea = {
       id : uuid.v4(),

@@ -9,16 +9,20 @@ import { BsChevronLeft  } from "react-icons/bs";
 import { useState } from 'react';
 import uuid from 'react-native-uuid'
 import { useSelector } from 'react-redux'
+import BotonPropio from '../components/BotonPropio'
+import { colors } from '../utils/colors'
 
 const MisPlantas = ({navigation, route}) => {
   const {screenHeigth,screenWidth} = route.params
-  const misPlantas = useSelector((state)=>state.misPlantas)
+  
   return (
     <View style = {styles.container}>
-      <AgregarTarea
+      {/* <AgregarTarea
         screenWidth={screenWidth}
-      />
+      /> */}
+      
       <ListaTareas
+      
         navigation={navigation}
         /* onHandlerModal = {onHandlerModal} */
         /* completeTask={completeTask} */
@@ -27,7 +31,14 @@ const MisPlantas = ({navigation, route}) => {
         /* onHandlerDetalle = {onHandlerDetalle} */
         /* itemDetalle = {itemDetalle} */
       />
+
+      <BotonPropio
+            nombre={"Agregar plantas al jardín"}
+            colorFondo={colors.VerdeClaro}
+            onPress={()=>navigation.navigate("Agregar planta")}
+      />
     </View>
+
   )
 }
 
@@ -39,7 +50,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#CAF0E6',
         alignItems: 'center',
         justifyContent: "flex-start",
-        gap:10,
+        gap:15,
+        
 
       },
 })

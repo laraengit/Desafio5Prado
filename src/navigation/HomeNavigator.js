@@ -8,7 +8,7 @@ import Home from '../Screens/Home'
 const HomeNavigator = () => {
     const Stack = createNativeStackNavigator()
   return (
-        <Stack.Navigator initialRouteName="Plantas" 
+        <Stack.Navigator initialRouteName="Inicio" 
         screenOptions={({route, navigation}) => {
           return{
             header: () => {

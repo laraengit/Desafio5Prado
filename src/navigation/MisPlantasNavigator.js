@@ -7,12 +7,14 @@ import PlantasDict from '../Screens/PlantasDict'
 import DetalleScreen from '../Screens/DetalleScreen'
 import MisPlantas from '../Screens/MisPlantas'
 import DetalleMiPlanta from '../Screens/DetalleMiPlanta'
+import { agregarPlanta } from '../features/misplantasSlice'
+import AgregarPlantaScreen from '../Screens/AgregarPlantaScreen'
 
 const MisPlantasNavigator = ({route}) => {
     const Stack = createNativeStackNavigator()
     const {screenHeigth,screenWidth} = route.params
   return (
-        <Stack.Navigator initialRouteName="Plantas" 
+        <Stack.Navigator initialRouteName="Mis Plantas" 
         screenOptions={({route, navigation}) => {
           return{
             header: () => {
@@ -21,7 +23,8 @@ const MisPlantasNavigator = ({route}) => {
           }
         }}>
           <Stack.Screen name="Mis Plantas" component={MisPlantas} initialParams={{screenHeigth,screenWidth}}/> 
-          <Stack.Screen name="Mi planta" component={DetalleMiPlanta} initialParams={{screenHeigth, screenWidth}}/> 
+          <Stack.Screen name="Mi planta" component={DetalleMiPlanta} /> 
+          <Stack.Screen name="Agregar planta" component={AgregarPlantaScreen} initialParams={{screenHeigth, screenWidth}}/> 
       </Stack.Navigator>
   )
 }

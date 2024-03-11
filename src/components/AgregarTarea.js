@@ -58,7 +58,7 @@ const AgregarTarea = ({screenWidth}) => {
         <BotonPropio
             nombre={"Agregar"}
             colorFondo={"#5DC966"}
-            onPress={(misPlantas) => {dispatch(agregarPlanta({nombre: nombre, especie: especie, riego: riego, cuidados: cuidados}));limpiarInput()}}
+            onPress={() => {dispatch(agregarPlanta({nombre: nombre, especie: especie, riego: riego, cuidados: cuidados}));limpiarInput()}}
             />
         {/* <Button title='+' onPress={agregarTarea}/> */}
       </View>
